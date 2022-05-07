@@ -1,1 +1,185 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap'); 
+
+html {
+  box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 14.52%, rgba(255, 255, 255, 0) 87.38%), #CCCCCC;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+.page {
+  height: 100%;
+  font-family: 'Muli', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.page__body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100%;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+.btn-reset {
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1140px;
+}
+
+// keyboard
+.title {
+  text-align: center;
+}
+#keyboard {
+  display: block;
+  margin-top: 30px;
+  padding: 10px;
+  border: 1px solid #111;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 14.52%, rgba(255, 255, 255, 0) 87.38%), #626166;
+  box-shadow: 0px 2px 0px #191A1F;
+  border-radius: 12px;
+
+}
+
+#keyboard::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.textarea {
+  margin-top: 30px;
+  display: block;
+  max-width: 1100px;
+  width: 1100px;
+}
+
+.key {
+  float: left;
+  margin: 3px;
+  padding-top: 17px;
+  // padding: 3px;
+  width: 62px;
+  height: 60px;
+  // border: 1px solid #111;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #FFFFFF;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.06) 100%), #191A1F;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  box-shadow: inset 0px 3px 1px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+
+.btn-shift {
+  width: 130px;
+  letter-spacing: 0.06em;
+}
+.btn-shift::after {
+  content: "SHIFT";
+}
+.btn-caps {
+  width: 130px;
+}
+.btn-caps::after {
+  content: "CAPSLOCK";
+  letter-spacing: 0.06em;
+
+}
+.btn-tab::after {
+  content: 'TAB';
+  letter-spacing: 0.06em;
+
+}
+.btn-del::after {
+  content: "DEL";
+  letter-spacing: 0.06em;
+
+  
+}
+.btn-back {
+  width: 130px;
+}
+.btn-back::after {
+  content: "BACKSPACE";
+  letter-spacing: 0.06em;
+
+}
+.btn-alt::after {
+  content: "ALT";
+  letter-spacing: 0.06em;
+
+}
+.btn-win::after {
+  content: "WIN";
+  letter-spacing: 0.06em;
+
+}
+.btn-enter {
+  width: 130px;
+}
+.btn-enter::after {
+  content: "ENTER";
+  letter-spacing: 0.06em;
+}
+.btn-space {
+  width: 470px;
+}
+.btn-ctrl::after {
+  content: "CTRL";
+  letter-spacing: 0.06em;
+}
+
+.key:hover {
+  background-color: darkgrey;
+}
+.key:active {
+  background: rgb(184, 83, 67);
+  border-radius: 50px;
+}
+
+.fix {
+  width: 100%;
+  clear: both;
+}
+
+.active {
+  background: rgb(184, 83, 67);
+  border-radius: 50px;
+
+}
+.caps-active {
+  background: rgb(184, 83, 67);
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+.btn-shift.active .key {
+  text-transform: uppercase;
+}
