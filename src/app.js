@@ -121,3 +121,65 @@ function keyPress() {
   });
 }
 keyPress();
+
+function keyDown() {
+  document.addEventListener('keydown', (event) => {
+    if (event.code === 'ShiftLeft') {
+      event.preventDefault();
+      document.querySelector('[data-key="ShiftLeft"]').classList.add('active');
+    }
+    if (event.code === 'ShiftRight') {
+      event.preventDefault();
+      document.querySelector('[data-key="ShiftRight"]').classList.add('active');
+    }
+    if (event.shiftKey) {
+      buttons.forEach((elem) => {
+        elem.classList.add('uppercase');
+        elem.innerHTML = elem.textContent.toUpperCase();
+      });
+    }
+    if (event.code === 'CapsLock') {
+      event.preventDefault();
+      document.querySelector('[data-key="CapsLock"]').classList.toggle('active');
+    }
+    if (event.code === 'ControlLeft') {
+      document.querySelector('[data-key="ControlLeft"]').classList.add('active');
+    }
+    if (event.code === 'ControlRight') {
+      document.querySelector('[data-key="ControlRight"]').classList.add('active');
+    }
+    if (event.code === 'AltRight') {
+      event.preventDefault();
+      document.querySelector('[data-key="AltRight"]').classList.add('active');
+    }
+    if (event.code === 'AltLeft') {
+      event.preventDefault();
+      document.querySelector('[data-key="AltLeft"]').classList.add('active');
+    }
+    if (event.code === 'Enter') {
+      event.preventDefault();
+      document.querySelector('[data-key="Enter"]').classList.add('active');
+      const str = text.value;
+      text.value = str + '\n';
+      return text.value;
+    }
+    if (event.code === 'Backspace') {
+      document.querySelector('[data-key="Backspace"]').classList.add('active');
+    }
+    if (event.code === 'Delete') {
+      document.querySelector('[data-key="Delete"]').classList.add('active');
+    }
+    if (event.code === 'MetaLeft') {
+      document.querySelector('[data-key="MetaLeft"]').classList.add('active');
+    }
+    if (event.code === 'Tab') {
+      event.preventDefault();
+      document.querySelector('[data-key="Tab"]').classList.add('active');
+    }
+
+    // if(event.keyCode === 20 || event.charCode === 20){
+    //   document.querySelector('[data-key="CapsLock"]').classList.add('active');
+    // }
+  });
+}
+keyDown();
