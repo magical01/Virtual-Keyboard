@@ -198,6 +198,7 @@ const engM = document.querySelector('[data-key="KeyM"]').textContent;
 
 function genereteSpecialsKeys() {
   TAB.classList.add('btn-tab');
+  TAB.innerHTML = '    ';
 
   DEL.classList.add('btn-del');
 
@@ -270,6 +271,13 @@ function keyDown() {
         elem.classList.add('uppercase');
         elem.innerHTML = elem.textContent.toUpperCase();
       });
+    }
+    if (event.code === 'Tab') {
+      event.preventDefault();
+      TAB.innerHTML = '    ';
+      const str = TAB.innerHTML;
+      text.value = str;
+      return text.value;
     }
     if (event.code === 'CapsLock') {
       event.preventDefault();
