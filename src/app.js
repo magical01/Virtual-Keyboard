@@ -1,14 +1,23 @@
+/* eslint-disable no-sparse-arrays */
+/* eslint-disable spaced-comment */
+/* eslint-disable max-len */
+/* eslint-disable comma-style */
+/* eslint-disable array-bracket-spacing */
+/* eslint-disable no-console */
+/* eslint-disable func-names */
+/* eslint-disable no-shadow */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-plusplus */
 function generateWrapper() {
   let html = '';
   html += `
   <div class="container">
-  <h1 class="title">
-    Virtual Keyboard
-  </h1>
-  <textarea class="textarea" name="" id="textarea" cols="30" rows="10" autofocus></textarea>
-    <div class="keyboard" id="keyboard">
-      
-    </div>
+    <h1 class="title">
+      Virtual Keyboard
+    </h1>
+    <textarea class="textarea" name="" id="textarea" cols="30" rows="10" autofocus></textarea>
+    <div class="keyboard" id="keyboard"></div>
+    <div class="description">${'Клавиатура создана в операционной системе Windows'}</div>
   </div>
   `;
   const body = document.querySelector('.page__body');
@@ -19,15 +28,23 @@ generateWrapper();
 const parent = document.querySelector('#keyboard');
 
 const keyboard = [96, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 45, 61, /*8*/,
- /*9*/, 113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 91, 93, 92, /*46*/, /*20*/, 97, 115, 100, 102, 103, 104, 106,
-107, 108, 59, 39, /*13*/, /*16*/, 122, 120, 99, 118, 98, 110, 109, 44, 46, 47, 38,
-/*16*/, /*17*/, /*'win'*/, /*18*/, 32, /*18*/, '◄', '▼', '►', /*17*/];
+  /*9*/, 113, 119, 101, 114, 116, 121, 117, 105, 111, 112, 91, 93, 92, /*46*/, /*20*/, 97, 115, 100, 102, 103, 104, 106,
+  107, 108, 59, 39, /*13*/, /*16*/, 122, 120, 99, 118, 98, 110, 109, 44, 46, 47, 38,
+  /*16*/, /*17*/, /*'win'*/, /*18*/, 32, /*18*/, '◄', '▼', '►' /*17*/];
 
 const arr = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Tab', 'KeyQ',
- 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash','Delete', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG',
- 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight',
+  'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG',
+  'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight',
   'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'];
 
+const rus = ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г',
+  'ш', 'щ', 'з', 'х', 'ъ', '\\', 'CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter', 'Shift', 'я',
+  'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'Shift', 'Control', 'Meta', 'Alt', ' ', 'Control', 'AltGraph', 'Control', 'ArrowLeft',
+  'ArrowDown', 'ArrowRight', 'ArrowUp'];
+
+console.log(arr.length);
+console.log(keyboard.length);
+console.log(rus.length);
 const text = document.querySelector('#textarea');
 
 function generateHTML() {
@@ -68,40 +85,77 @@ function getAttributeKey() {
 }
 getAttributeKey();
 
+function getRusAttribute() {
+  const dataKey = document.querySelectorAll('.key');
+
+  for (let i = 0; i < rus.length - 1; i++) {
+    dataKey[i].setAttribute('data-rus', rus[i]);
+  }
+}
+getRusAttribute();
+
+const TAB = document.querySelector('[data-key="Tab"]');
+const DEL = document.querySelector('[data-key="Delete"]');
+const BACKSPACE = document.querySelector('[data-key="Backspace"]');
+const CAPS = document.querySelector('[data-key="CapsLock"]');
+const ENTER = document.querySelector('[data-key="Enter"]');
+const SHIFTLEFT = document.querySelector('[data-key="ShiftLeft"]');
+const SHIFTRIGHT = document.querySelector('[data-key="ShiftRight"]');
+const CTRLLEFT = document.querySelector('[data-key="ControlLeft"]');
+const WIN = document.querySelector('[data-key="MetaLeft"]');
+const ALTLEFT = document.querySelector('[data-key="AltLeft"]');
+const ALTRIGHT = document.querySelector('[data-key="AltRight"]');
+const CTRLRIGHT = document.createElement('div');
+const UP = document.querySelector(`[data-num="${38}"]`);
+const DOWN = document.querySelector(`[data-num="${'▼'}"]`);
+const LEFT = document.querySelector(`[data-num="${'◄'}"]`);
+const RIGHT = document.querySelector(`[data-num="${'►'}"]`);
+const BACKQUOTE = document.querySelector('[data-key="Backquote"]');
+const DIGIT1 = document.querySelector('[data-key="Digit1"]');
+const DIGIT2 = document.querySelector('[data-key="Digit2"]');
+const DIGIT3 = document.querySelector('[data-key="Digit3"]');
+const DIGIT4 = document.querySelector('[data-key="Digit4"]');
+const DIGIT5 = document.querySelector('[data-key="Digit5"]');
+const DIGIT6 = document.querySelector('[data-key="Digit6"]');
+const DIGIT7 = document.querySelector('[data-key="Digit7"]');
+const DIGIT8 = document.querySelector('[data-key="Digit8"]');
+const DIGIT9 = document.querySelector('[data-key="Digit9"]');
+const DIGIT0 = document.querySelector('[data-key="Digit0"]');
+const MINUS = document.querySelector('[data-key="Minus"]');
+const EQUAL = document.querySelector('[data-key="Equal"]');
+const BRACKETLEFT = document.querySelector('[data-key="BracketLeft"]');
+const BRACKETRIGHT = document.querySelector('[data-key="BracketRight"]');
+const BACKSLASH = document.querySelector('[data-key="Backslash"]');
+const SEMICOLON = document.querySelector('[data-key="Semicolon"]');
+const QUOTE = document.querySelector('[data-key="Quote"]');
+const COMMA = document.querySelector('[data-key="Comma"]');
+const PERIOD = document.querySelector('[data-key="Period"]');
+const SLASH = document.querySelector('[data-key="Slash"]');
+
 function genereteSpecialsKeys() {
-  const TAB = document.querySelector('[data-key="Tab"]');
   TAB.classList.add('btn-tab');
-  const DEL = document.querySelector('[data-key="Delete"]');
+
   DEL.classList.add('btn-del');
 
-  const BACKSPACE = document.querySelector('[data-key="Backspace"]');
   BACKSPACE.classList.add('btn-back');
 
-  const CAPS = document.querySelector('[data-key="CapsLock"]');
   CAPS.classList.add('btn-caps');
 
-  const ENTER = document.querySelector('[data-key="Enter"]');
   ENTER.classList.add('btn-enter');
 
-  const SHIFTLEFT = document.querySelector('[data-key="ShiftLeft"]');
   SHIFTLEFT.classList.add('btn-shift');
 
-  const SHIFTRIGHT = document.querySelector('[data-key="ShiftRight"]');
-  SHIFTRIGHT.classList.add('btn-shift');
+  SHIFTRIGHT.className += ' btn-shift';
+  // SHIFTRIGHT.classList.remove('key');
 
-  const CTRLLEFT = document.querySelector('[data-key="ControlLeft"]');
   CTRLLEFT.classList.add('btn-ctrl');
 
-  const WIN = document.querySelector('[data-key="MetaLeft"]');
   WIN.classList.add('btn-win');
 
-  const ALTLEFT = document.querySelector('[data-key="AltLeft"]');
   ALTLEFT.classList.add('btn-alt');
 
-  const ALTRIGHT = document.querySelector('[data-key="AltRight"]');
   ALTRIGHT.classList.add('btn-alt');
 
-  const CTRLRIGHT = document.createElement('div');
   CTRLRIGHT.className += 'key btn-ctrl';
   CTRLRIGHT.setAttribute('data-key', 'ControlRight');
   parent.append(CTRLRIGHT);
@@ -113,10 +167,12 @@ function keyPress() {
     console.log(event.code); // keyA
     console.log(event.keyCode); // 97;
     console.log(event.charCode);
-    document.querySelectorAll('#keyboard .key').forEach((elem) => {
-      elem.classList.remove('active');
-    });
-    document.querySelector(`[data-num="${event.keyCode}"]`).classList.add('active');
+    // document.querySelectorAll('#keyboard .key').forEach((elem) => {
+    //   setTimeout(() => {
+    //     elem.classList.remove('active');
+    //   }, 400)
+    // });
+    document.querySelector(`[data-key="${event.code}"]`).classList.add('active');
     text.focus();
   });
 }
@@ -133,6 +189,28 @@ function keyDown() {
       document.querySelector('[data-key="ShiftRight"]').classList.add('active');
     }
     if (event.shiftKey) {
+      BACKQUOTE.innerHTML = '~';
+      DIGIT1.innerHTML = '!';
+      DIGIT2.innerHTML = '@';
+      DIGIT3.innerHTML = '#';
+      DIGIT4.innerHTML = '$';
+      DIGIT5.innerHTML = '%';
+      DIGIT6.innerHTML = '^';
+      DIGIT7.innerHTML = '&';
+      DIGIT8.innerHTML = '*';
+      DIGIT9.innerHTML = '(';
+      DIGIT0.innerHTML = ')';
+      MINUS.innerHTML = '_';
+      EQUAL.innerHTML = '+';
+      BRACKETLEFT.innerHTML = '{';
+      BRACKETRIGHT.innerHTML = '}';
+      BACKSLASH.innerHTML = '|';
+      SEMICOLON.innerHTML = ':';
+      QUOTE.innerHTML = '"';
+      COMMA.innerHTML = '<';
+      PERIOD.innerHTML = '>';
+      SLASH.innerHTML = '?';
+
       buttons.forEach((elem) => {
         elem.classList.add('uppercase');
         elem.innerHTML = elem.textContent.toUpperCase();
@@ -160,7 +238,7 @@ function keyDown() {
       event.preventDefault();
       document.querySelector('[data-key="Enter"]').classList.add('active');
       const str = text.value;
-      text.value = str + '\n';
+      text.value = `${str}\n`;
       return text.value;
     }
     if (event.code === 'Backspace') {
@@ -176,6 +254,35 @@ function keyDown() {
       event.preventDefault();
       document.querySelector('[data-key="Tab"]').classList.add('active');
     }
+    if (event.code === 'ArrowUp') {
+      event.preventDefault();
+      UP.classList.add('active');
+      UP.innerHTML = '▲';
+      const str = text.value;
+      text.value = `${str}▲`;
+    }
+    if (event.code === 'ArrowDown') {
+      event.preventDefault();
+      DOWN.classList.add('active');
+      DOWN.innerHTML = '▼';
+      const str = text.value;
+      text.value = `${str}▼`;
+    }
+    if (event.code === 'ArrowLeft') {
+      event.preventDefault();
+      LEFT.classList.add('active');
+      LEFT.innerHTML = '◄';
+      const str = text.value;
+      text.value = `${str}◄`;
+    }
+    if (event.code === 'ArrowRight') {
+      event.preventDefault();
+      RIGHT.classList.add('active');
+      RIGHT.innerHTML = '►';
+      const str = text.value;
+      text.value = `${str}►`;
+    }
+    return true;
 
     // if(event.keyCode === 20 || event.charCode === 20){
     //   document.querySelector('[data-key="CapsLock"]').classList.add('active');
@@ -183,3 +290,143 @@ function keyDown() {
   });
 }
 keyDown();
+
+function keyUp() {
+  document.addEventListener('keyup', (event) => {
+    document.querySelectorAll('#keyboard .key').forEach((elem) => {
+      elem.classList.remove('active');
+    });
+    SHIFTRIGHT.classList.remove('active');
+    if (!event.shiftKey) {
+      BACKQUOTE.innerHTML = '`';
+      DIGIT1.innerHTML = '1';
+      DIGIT2.innerHTML = '2';
+      DIGIT3.innerHTML = '3';
+      DIGIT4.innerHTML = '4';
+      DIGIT5.innerHTML = '5';
+      DIGIT6.innerHTML = '6';
+      DIGIT7.innerHTML = '7';
+      DIGIT8.innerHTML = '8';
+      DIGIT9.innerHTML = '9';
+      DIGIT0.innerHTML = '0';
+      MINUS.innerHTML = '-';
+      EQUAL.innerHTML = '=';
+      BRACKETLEFT.innerHTML = '[';
+      BRACKETRIGHT.innerHTML = ']';
+      BACKSLASH.innerHTML = String.fromCharCode(92);
+      SEMICOLON.innerHTML = ';';
+      QUOTE.innerHTML = String.fromCharCode(39);
+      COMMA.innerHTML = ',';
+      PERIOD.innerHTML = '.';
+      SLASH.innerHTML = '/';
+      buttons.forEach((elem) => {
+        elem.classList.remove('uppercase');
+        elem.innerHTML = elem.textContent.toLowerCase();
+      });
+    }
+  });
+}
+keyUp();
+
+function mouseDown() {
+  document.querySelectorAll('#keyboard .key').forEach((elem) => {
+    elem.addEventListener('click', function () {
+      document.querySelectorAll('#keyboard .key').forEach((element) => {
+        setTimeout(() => {
+          element.classList.remove('active');
+        }, 50);
+        // element.classList.remove('active');
+      });
+      const code = this.textContent;
+      this.classList.add('active');
+      // const datakeys = this.getAttribute('data-key');
+      // const datanum = this.getAttribute('data-num');
+      // console.log('дата нам: ' + datanum);
+      // console.log('дата кейс: ' + datakeys);
+      text.focus();
+      text.value += code;
+    });
+  });
+}
+mouseDown();
+
+function paramKey() {
+  document.querySelectorAll('.key').forEach((elem) => {
+    elem.addEventListener('mousedown', () => {
+      if (elem.dataset.key === 'Backspace') {
+        const str = text.value;
+        text.value = str.slice(0, -1);
+        return text.value;
+      }
+      if (elem.dataset.key === 'Enter') {
+        const str = text.value;
+        text.value = `${str}\n`;
+        return text.value;
+      }
+      if (elem.dataset.key === 'ShiftRight' || elem.dataset.key === 'ShiftLeft') {
+        BACKQUOTE.innerHTML = '~';
+        DIGIT1.innerHTML = '!';
+        DIGIT2.innerHTML = '@';
+        DIGIT3.innerHTML = '#';
+        DIGIT4.innerHTML = '$';
+        DIGIT5.innerHTML = '%';
+        DIGIT6.innerHTML = '^';
+        DIGIT7.innerHTML = '&';
+        DIGIT8.innerHTML = '*';
+        DIGIT9.innerHTML = '(';
+        DIGIT0.innerHTML = ')';
+        MINUS.innerHTML = '_';
+        EQUAL.innerHTML = '+';
+        BRACKETLEFT.innerHTML = '{';
+        BRACKETRIGHT.innerHTML = '}';
+        BACKSLASH.innerHTML = '|';
+        SEMICOLON.innerHTML = ':';
+        QUOTE.innerHTML = '"';
+        COMMA.innerHTML = '<';
+        PERIOD.innerHTML = '>';
+        SLASH.innerHTML = '?';
+        buttons.forEach((elem) => {
+          elem.classList.add('uppercase');
+          elem.innerHTML = elem.textContent.toUpperCase();
+        });
+      }
+      return true;
+    });
+  });
+}
+paramKey();
+
+function mouseUp() {
+  document.querySelectorAll('.key').forEach((elem) => {
+    elem.addEventListener('mouseup', () => {
+      if (elem.dataset.key === 'ShiftRight' || elem.dataset.key === 'ShiftLeft') {
+        BACKQUOTE.innerHTML = '`';
+        DIGIT1.innerHTML = '1';
+        DIGIT2.innerHTML = '2';
+        DIGIT3.innerHTML = '3';
+        DIGIT4.innerHTML = '4';
+        DIGIT5.innerHTML = '5';
+        DIGIT6.innerHTML = '6';
+        DIGIT7.innerHTML = '7';
+        DIGIT8.innerHTML = '8';
+        DIGIT9.innerHTML = '9';
+        DIGIT0.innerHTML = '0';
+        MINUS.innerHTML = '-';
+        EQUAL.innerHTML = '=';
+        BRACKETLEFT.innerHTML = '[';
+        BRACKETRIGHT.innerHTML = ']';
+        BACKSLASH.innerHTML = String.fromCharCode(92);
+        SEMICOLON.innerHTML = ';';
+        QUOTE.innerHTML = String.fromCharCode(39);
+        COMMA.innerHTML = ',';
+        PERIOD.innerHTML = '.';
+        SLASH.innerHTML = '/';
+        buttons.forEach((elem) => {
+          elem.classList.remove('uppercase');
+          elem.innerHTML = elem.textContent.toLowerCase();
+        });
+      }
+    });
+  });
+}
+mouseUp();

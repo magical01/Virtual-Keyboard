@@ -96,6 +96,28 @@ a {
   transition: 0.1s ease-in-out;
 }
 
+.key-spec {
+  float: left;
+  margin: 3px;
+  padding-top: 17px;
+  // padding: 3px;
+  width: 62px;
+  height: 60px;
+  // border: 1px solid #111;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #FFFFFF;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.06) 100%), #191A1F;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  box-shadow: inset 0px 3px 1px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+
 .btn-shift {
   width: 130px;
   letter-spacing: 0.06em;
@@ -182,4 +204,12 @@ a {
 
 .btn-shift.active .key {
   text-transform: uppercase;
+}
+
+
+.description {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
 }
