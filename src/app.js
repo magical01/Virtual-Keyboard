@@ -18,6 +18,7 @@ function generateWrapper() {
     <textarea class="textarea" name="" id="textarea" cols="30" rows="10" autofocus></textarea>
     <div class="keyboard" id="keyboard"></div>
     <div class="description">${'Клавиатура создана в операционной системе Windows'}</div>
+    <div class="description">${'Для переключения языка комбинация: ctrl + alt'}</div>
   </div>
   `;
   const body = document.querySelector('.page__body');
@@ -38,9 +39,9 @@ const arr = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Dig
   'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight'];
 
 const rus = ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г',
-  'ш', 'щ', 'з', 'х', 'ъ', '\\', 'CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter', 'Shift', 'я',
-  'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'Shift', 'Control', 'Meta', 'Alt', ' ', 'Control', 'AltGraph', 'Control', 'ArrowLeft',
-  'ArrowDown', 'ArrowRight', 'ArrowUp'];
+  'ш', 'щ', 'з', 'х', 'ъ', '\\', 'Del', 'CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter', 'Shift', 'я',
+  'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'ArrowUp', 'Shift', 'Control', 'Meta', 'AltGraph', ' ', 'AltGraph', 'ArrowLeft', 'ArrowDown', 'ArrowRight',
+  'Control'];
 
 console.log(arr.length);
 console.log(keyboard.length);
@@ -131,6 +132,69 @@ const QUOTE = document.querySelector('[data-key="Quote"]');
 const COMMA = document.querySelector('[data-key="Comma"]');
 const PERIOD = document.querySelector('[data-key="Period"]');
 const SLASH = document.querySelector('[data-key="Slash"]');
+
+const TILDA = document.querySelector('[data-rus="ё"]');
+const Q = document.querySelector('[data-rus="й"]');
+const W = document.querySelector('[data-rus="ц"]');
+const E = document.querySelector('[data-rus="у"]');
+const R = document.querySelector('[data-rus="к"]');
+const T = document.querySelector('[data-rus="е"]');
+const Y = document.querySelector('[data-rus="н"]');
+const U = document.querySelector('[data-rus="г"]');
+const I = document.querySelector('[data-rus="ш"]');
+const O = document.querySelector('[data-rus="щ"]');
+const P = document.querySelector('[data-rus="з"]');
+const XX = document.querySelector('[data-rus="х"]');
+const FIRM = document.querySelector('[data-rus="ъ"]');
+const rusSlash = document.querySelector('[data-key="Backslash"]');
+const A = document.querySelector('[data-rus="ф"]');
+const S = document.querySelector('[data-rus="ы"]');
+const D = document.querySelector('[data-rus="в"]');
+const F = document.querySelector('[data-rus="а"]');
+const G = document.querySelector('[data-rus="п"]');
+const H = document.querySelector('[data-rus="р"]');
+const J = document.querySelector('[data-rus="о"]');
+const K = document.querySelector('[data-rus="л"]');
+const L = document.querySelector('[data-rus="д"]');
+const rusSemicolon = document.querySelector('[data-rus="ж"]');
+const rusMarks = document.querySelector('[data-rus="э"]');
+const Z = document.querySelector('[data-rus="я"]');
+const X = document.querySelector('[data-rus="ч"]');
+const C = document.querySelector('[data-rus="с"]');
+const V = document.querySelector('[data-rus="м"]');
+const B = document.querySelector('[data-rus="и"]');
+const N = document.querySelector('[data-rus="т"]');
+const M = document.querySelector('[data-rus="ь"]');
+const rusComma = document.querySelector('[data-rus="б"]');
+const rusDot = document.querySelector('[data-rus="ю"]');
+const rusBackslash = document.querySelector('[data-rus="."]');
+
+const engQ = document.querySelector('[data-key="KeyQ"]').textContent;
+const engW = document.querySelector('[data-key="KeyW"]').textContent;
+const engE = document.querySelector('[data-key="KeyE"]').textContent;
+const engR = document.querySelector('[data-key="KeyR"]').textContent;
+const engT = document.querySelector('[data-key="KeyT"]').textContent;
+const engY = document.querySelector('[data-key="KeyY"]').textContent;
+const engU = document.querySelector('[data-key="KeyU"]').textContent;
+const engI = document.querySelector('[data-key="KeyI"]').textContent;
+const engO = document.querySelector('[data-key="KeyO"]').textContent;
+const engP = document.querySelector('[data-key="KeyP"]').textContent;
+const engA = document.querySelector('[data-key="KeyA"]').textContent;
+const engS = document.querySelector('[data-key="KeyS"]').textContent;
+const engD = document.querySelector('[data-key="KeyD"]').textContent;
+const engF = document.querySelector('[data-key="KeyF"]').textContent;
+const engG = document.querySelector('[data-key="KeyG"]').textContent;
+const engH = document.querySelector('[data-key="KeyH"]').textContent;
+const engJ = document.querySelector('[data-key="KeyJ"]').textContent;
+const engK = document.querySelector('[data-key="KeyK"]').textContent;
+const engL = document.querySelector('[data-key="KeyL"]').textContent;
+const engZ = document.querySelector('[data-key="KeyZ"]').textContent;
+const engX = document.querySelector('[data-key="KeyX"]').textContent;
+const engC = document.querySelector('[data-key="KeyC"]').textContent;
+const engV = document.querySelector('[data-key="KeyV"]').textContent;
+const engB = document.querySelector('[data-key="KeyB"]').textContent;
+const engN = document.querySelector('[data-key="KeyN"]').textContent;
+const engM = document.querySelector('[data-key="KeyM"]').textContent;
 
 function genereteSpecialsKeys() {
   TAB.classList.add('btn-tab');
@@ -282,6 +346,44 @@ function keyDown() {
       const str = text.value;
       text.value = `${str}►`;
     }
+    if (event.altKey && event.ctrlKey) {
+      TILDA.innerHTML = TILDA.dataset.rus;
+      Q.innerHTML = Q.dataset.rus;
+      W.innerHTML = W.dataset.rus;
+      E.innerHTML = E.dataset.rus;
+      R.innerHTML = R.dataset.rus;
+      T.innerHTML = T.dataset.rus;
+      Y.innerHTML = Y.dataset.rus;
+      U.innerHTML = U.dataset.rus;
+      I.innerHTML = I.dataset.rus;
+      O.innerHTML = O.dataset.rus;
+      P.innerHTML = P.dataset.rus;
+      XX.innerHTML = XX.dataset.rus;
+      FIRM.innerHTML = FIRM.dataset.rus;
+      rusSlash.innerHTML = rusSlash.dataset.rus;
+      A.innerHTML = A.dataset.rus;
+      S.innerHTML = S.dataset.rus;
+      D.innerHTML = D.dataset.rus;
+      F.innerHTML = F.dataset.rus;
+      G.innerHTML = G.dataset.rus;
+      H.innerHTML = H.dataset.rus;
+      J.innerHTML = J.dataset.rus;
+      K.innerHTML = K.dataset.rus;
+      L.innerHTML = L.dataset.rus;
+      rusSemicolon.innerHTML = rusSemicolon.dataset.rus;
+      rusMarks.innerHTML = rusMarks.dataset.rus;
+      Z.innerHTML = Z.dataset.rus;
+      X.innerHTML = X.dataset.rus;
+      C.innerHTML = C.dataset.rus;
+      V.innerHTML = V.dataset.rus;
+      B.innerHTML = B.dataset.rus;
+      N.innerHTML = N.dataset.rus;
+      M.innerHTML = M.dataset.rus;
+      rusComma.innerHTML = rusComma.dataset.rus;
+      rusDot.innerHTML = rusDot.dataset.rus;
+      rusBackslash.innerHTML = rusBackslash.dataset.rus;
+      text.focus();
+    }
     return true;
 
     // if(event.keyCode === 20 || event.charCode === 20){
@@ -323,6 +425,35 @@ function keyUp() {
         elem.classList.remove('uppercase');
         elem.innerHTML = elem.textContent.toLowerCase();
       });
+    }
+    if (!(event.altKey && event.shiftKey)) {
+      Q.innerHTML = engQ;
+      W.innerHTML = engW;
+      E.innerHTML = engE;
+      R.innerHTML = engR;
+      T.innerHTML = engT;
+      Y.innerHTML = engY;
+      U.innerHTML = engU;
+      I.innerHTML = engI;
+      O.innerHTML = engO;
+      P.innerHTML = engP;
+      A.innerHTML = engA;
+      S.innerHTML = engS;
+      D.innerHTML = engD;
+      F.innerHTML = engF;
+      G.innerHTML = engG;
+      H.innerHTML = engH;
+      J.innerHTML = engJ;
+      K.innerHTML = engK;
+      L.innerHTML = engL;
+      Z.innerHTML = engZ;
+      X.innerHTML = engX;
+      C.innerHTML = engC;
+      V.innerHTML = engV;
+      B.innerHTML = engB;
+      N.innerHTML = engN;
+      M.innerHTML = engM;
+      text.focus();
     }
   });
 }
