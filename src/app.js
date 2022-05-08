@@ -210,7 +210,6 @@ function genereteSpecialsKeys() {
   SHIFTLEFT.classList.add('btn-shift');
 
   SHIFTRIGHT.className += ' btn-shift';
-  // SHIFTRIGHT.classList.remove('key');
 
   CTRLLEFT.classList.add('btn-ctrl');
 
@@ -228,14 +227,6 @@ genereteSpecialsKeys();
 
 function keyPress() {
   document.addEventListener('keypress', (event) => {
-    console.log(event.code); // keyA
-    console.log(event.keyCode); // 97;
-    console.log(event.charCode);
-    // document.querySelectorAll('#keyboard .key').forEach((elem) => {
-    //   setTimeout(() => {
-    //     elem.classList.remove('active');
-    //   }, 400)
-    // });
     document.querySelector(`[data-key="${event.code}"]`).classList.add('active');
     text.focus();
   });
@@ -388,10 +379,6 @@ function keyDown() {
       text.focus();
     }
     return true;
-
-    // if(event.keyCode === 20 || event.charCode === 20){
-    //   document.querySelector('[data-key="CapsLock"]').classList.add('active');
-    // }
   });
 }
 keyDown();
@@ -469,14 +456,9 @@ function mouseDown() {
         setTimeout(() => {
           element.classList.remove('active');
         }, 50);
-        // element.classList.remove('active');
       });
       const code = this.textContent;
       this.classList.add('active');
-      // const datakeys = this.getAttribute('data-key');
-      // const datanum = this.getAttribute('data-num');
-      // console.log('дата нам: ' + datanum);
-      // console.log('дата кейс: ' + datakeys);
       text.focus();
       text.value += code;
     });
