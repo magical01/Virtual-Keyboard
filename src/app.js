@@ -497,6 +497,11 @@ function paramKey() {
         text.value = `${str}\n`;
         return text.value;
       }
+      if (elem.dataset.key === 'Delete') {
+        const str = text.value;
+        text.value = str.slice(0, -1);
+        return text.value;
+      }
       if (elem.dataset.key === 'ShiftRight' || elem.dataset.key === 'ShiftLeft') {
         BACKQUOTE.innerHTML = '~';
         DIGIT1.innerHTML = '!';
