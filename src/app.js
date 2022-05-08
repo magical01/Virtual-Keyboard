@@ -283,6 +283,9 @@ function keyDown() {
     if (event.code === 'CapsLock') {
       event.preventDefault();
       document.querySelector('[data-key="CapsLock"]').classList.toggle('active');
+      buttons.forEach((elem) => {
+        elem.classList.toggle('uppercase');
+      });
     }
     if (event.code === 'ControlLeft') {
       document.querySelector('[data-key="ControlLeft"]').classList.add('active');
@@ -521,6 +524,13 @@ function paramKey() {
           elem.innerHTML = elem.textContent.toUpperCase();
         });
       }
+      if (elem.dataset.key === 'CapsLock') {
+        document.querySelector('[data-key="CapsLock"]').classList.toggle('active');
+        buttons.forEach((elem) => {
+          elem.classList.add('uppercase');
+          elem.innerHTML = elem.textContent.toUpperCase();
+        });
+      }
       return true;
     });
   });
@@ -557,7 +567,19 @@ function mouseUp() {
           elem.innerHTML = elem.textContent.toLowerCase();
         });
       }
+      if (elem.dataset.key === 'CapsLock') {
+        document.querySelector('[data-key="CapsLock"]').classList.toggle('active');
+        buttons.forEach((elem) => {
+          elem.classList.remove('uppercase');
+          elem.innerHTML = elem.textContent.toLowerCase();
+        });
+      }
     });
   });
 }
 mouseUp();
+
+// window.onload = function () {
+//   // eslint-disable-next-line no-alert
+//   alert('Буду благодарен, если проверите работу в четверг. Заранее спасибо');
+// };
