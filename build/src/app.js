@@ -275,7 +275,7 @@ function keyDown() {
     if (event.code === 'Tab') {
       event.preventDefault();
       TAB.innerHTML = '    ';
-      const str = TAB.innerHTML;
+      const str = text.value + TAB.innerHTML;
       text.value = str;
       return text.value;
     }
