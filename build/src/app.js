@@ -574,7 +574,3 @@ function mouseUp() {
 }
 mouseUp();
 
-window.onload = function () {
-  // eslint-disable-next-line no-alert
-  alert('Буду благодарен, если проверите работу в четверг. Заранее спасибо');
-};
